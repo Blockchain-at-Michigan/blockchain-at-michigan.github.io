@@ -1,16 +1,23 @@
 import { useState } from 'react';
-import { ThemeProvider, CssBaseline, AppBar, Toolbar, Typography, Button, IconButton, Grid, Paper, Divider, Box } from '@material-ui/core';
+import { ThemeProvider, CssBaseline, AppBar, Toolbar, Typography, Button, IconButton, Grid, Paper, Divider, Box, Tabs, Tab } from '@material-ui/core';
 import { createMuiTheme, makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
 import { Instagram, YouTube, Twitter, LinkedIn } from '@material-ui/icons';
 
 import SimpleList from './SimpleList';
+import Header from './Header';
+import LogoTitle from './LogoTitle';
 
 import Contact from './pages/Contact';
 import Education from './pages/Education';
+import Home from './pages/Home';
 import Consulting from './pages/Consulting';
 
 const pages = [
-    { title: 'Home', subtitle: 'What is Blockchain at Michigan?' },
+    {
+        title: 'Home',
+        subtitle: 'What is Blockchain at Michigan?',
+        app: <Home />,
+    },
     {
         title: 'Education',
         subtitle: 'Check out past cohort projects',
@@ -68,24 +75,12 @@ const icons = [
     { icon: <LinkedIn />, href: 'https://www.google.com/' },
 ]
 
-function LogoTitle() {
-    return (
-        <div>
-            Logo
-
-            <Typography color="inherit">
-                BLOCKCHAIN AT MICHIGAN
-            </Typography>
-        </div>
-    );
-}
-
 function App() {
     const classes = useStyles();
     const [index, setIndex] = useState(0);
     const page = pages[index];
 
-    function Header() {
+    function Header1() {
         return (
             <Toolbar>
 
@@ -169,26 +164,10 @@ function App() {
             theme={createMuiTheme(dark)}
         >
             <CssBaseline />
-            <div
-                className={classes.root}
-            >
-                <Header />
 
-                {/* <Grid container spacing={1}>
-                    <Grid item>
-                        <Button variant='contained'>
-                            {page.title}
-                        </Button>
-                    </Grid>
+            <Header names={names} index={index} setIndex={setIndex} />
 
-                    <Grid item>
-                        <Paper className={classes.paper}>
-                            <Typography>
-                                {page.subtitle}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                </Grid> */}
+            <Box p={2}>
 
                 <div className={classes.title}>
                     <Button variant='contained'>
@@ -199,11 +178,14 @@ function App() {
                         {page.subtitle}
                     </Paper>
                 </div>
-
-                {page.app}
-
+                <br />
+                
+                <Box p={9}>
+                    {page.app}
+                </Box>
+                
                 <Footer />
-            </div>
+            </Box>
         </ThemeProvider>
     );
 }
