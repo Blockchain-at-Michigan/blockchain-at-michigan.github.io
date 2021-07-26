@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider, CssBaseline } from '@material-ui/core';
+import { createMuiTheme, makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+const pages = 'Home Education Consulting Research/Entrepreneurship Publishing Events Resources About'.split(' ');
+
+export const dark = {
+    palette: {
+        type: "dark"
+    }
+};
+
+function App() {    
+    return (
+        <ThemeProvider theme={createMuiTheme(dark)}>
+            <CssBaseline />
+            <div className="App">
+                <Header pages={pages} />
+                <Footer pages={pages} />
+            </div>
+        </ThemeProvider>
+    );
 }
 
 export default App;
