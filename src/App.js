@@ -11,6 +11,30 @@ import Contact from './pages/Contact';
 import Education from './pages/Education';
 import Home from './pages/Home';
 import Consulting from './pages/Consulting';
+import Publishing from './pages/Publishing';
+import Events from './pages/Events';
+
+const useStyles = makeStyles( (theme) => ({
+    root: {
+        flexGrow: 1,
+        padding: theme.spacing(2),
+    },
+    paper: {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+    },
+    title: {
+        flexGrow: 1,
+        display: 'flex',
+        alignItems: 'center',
+    }
+}));
+
+export const dark = {
+    palette: {
+        type: "dark"
+    }
+};
 
 const pages = [
     {
@@ -32,10 +56,15 @@ const pages = [
         title: 'Research',
         subtitle: 'Our innovation efforts within the space'
     },
-    { title: 'Publishing', subtitle: 'Check out our regular newsletter' },
+    {
+        title: 'Publishing',
+        subtitle: 'Check out our regular newsletter',
+        app: <Publishing />,
+    },
     {
         title: 'Events',
-        subtitle: 'Come join us and learn about blockchain!'
+        subtitle: 'Come join us and learn about blockchain!',
+        app: <Events />,
     },
     {
         title: 'Resources',
@@ -45,28 +74,6 @@ const pages = [
     { title: 'Contact', subtitle: 'Reach out to us', app: <Contact /> }
 ];
 const names = pages.map(page => page.title);
-
-export const dark = {
-    palette: {
-        type: "dark"
-    }
-};
-
-const useStyles = makeStyles( (theme) => ({
-    root: {
-        flexGrow: 1,
-        padding: theme.spacing(2),
-    },
-    paper: {
-        padding: theme.spacing(1),
-        textAlign: 'center',
-    },
-    title: {
-        flexGrow: 1,
-        display: 'flex',
-        alignItems: 'center',
-    }
-}));
 
 const icons = [
     { icon: <Instagram />, href: 'https://www.google.com/' },
@@ -120,12 +127,12 @@ function App() {
 
     function Footer() {
         return (
-            <Grid container>
-                <Grid item xs={3}>
+            <Grid container spacing={1}>
+                <Grid item xs={4}>
                     <LogoTitle />
                 </Grid>
 
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                     <Typography>
                         Quick Links
                     </Typography>

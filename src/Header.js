@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 import LogoTitle from './LogoTitle';
 import { Toolbar } from '@material-ui/core';
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,

@@ -1,9 +1,13 @@
 import { Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import logo from './images/logo.png';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        display: 'flex',
+        alignItems: 'center',
     },
 }));
 
@@ -12,7 +16,7 @@ export default function LogoTitle() {
 
     return (
         <div className={classes.root}>
-            Logo
+            <img src={logo} />
 
             <Typography color="inherit">
                 BLOCKCHAIN AT MICHIGAN
